@@ -11,7 +11,7 @@ void main() async {
       appId: appId,
       messagingSenderId: messagingSenderId,
       projectId: projectId,
-      storageBucket: 'qrcode-1234.firebasestorage.app',
+      storageBucket: 'qrcode12-be84c.firebasestorage.app',
     ),
   );
 
