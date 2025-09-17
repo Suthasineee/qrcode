@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
@@ -10,13 +11,21 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final _player = AudioPlayer();
   @override
   void initState() {
+    play();
     super.initState();
+  }
+
+  Future<void> play() async {
+    await _player.play(AssetSource("audio/sample.mp3"));
+    _player.resume;
   }
 
   @override
   void dispose() {
+    _player.stop();
     super.dispose();
   }
 
@@ -26,6 +35,19 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Center());
+    return Scaffold(
+      body: Center(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.7,
+              child: Image.asset('assets/image/image.jpg'),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
